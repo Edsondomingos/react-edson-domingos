@@ -1,25 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
- class ClockClass extends React.component {
+ class Toggle extends React.component {
      constructor(props){
         super(props)
-        this.state = {date: new Date()}
+        this.state = {isToggleOn: false}
+        this.handleClick = this.handleClick.bind(this) //Di que o di usado é o mesmo da classe
      }
 
-     componentDidMount(){
+     componentDidMount(){ //Quando monta
          this.timeId = setInterval(() => {
              this.setState({date: new Date()})
          }, 1000)
      }
 
-     componentWillMount(){
+     componentWillUnmount(){ // Quando desmontar
          clearInterval(this.timeId)
+     }
+
+     handleClick()){
+        this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+        })) //prevState - estado anterior
      }
 
      render(){
          return (
-             <div><h1>Hora: {this.state.date.toLocaleTimeString()}</h1></div>
+             <button onClick={this.handleClick}>{this.state.isToggleOn ? 'ON' : 'OFF'}</button>
+             //<button onClick={() => this.handleClick()}>{this.state.isToggleOn ? 'ON' : 'OFF'}</button> // Usando arrow function não prcisa defir o this no construtor
          )
      }
  }
@@ -27,7 +35,7 @@ import ReactDOM from 'react-dom/client';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 <React.StrictMode>
-    <ClockClass />
+    <Toggle />
 </React.StrictMode>
 );
   
