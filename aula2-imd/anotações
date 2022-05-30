@@ -1,0 +1,5 @@
+props - Não podem ser alteradas
+state - podem ser alterados
+ClockClass - component gerenciavel. Guarda hora internamente no componente
+componentDidMount - quando o componente acabar de ser remontado
+componentWillMount - quando for desmontar o component
