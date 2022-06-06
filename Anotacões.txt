@@ -1,0 +1,7 @@
+npm i axios
+npm i react-router-dom :
+BrowserRouter - container principal do Switch
+
+exact - defini a rota exatamanete
+
+arquivo routes.js com "r" minusculo. Estava dando erro com maiusculo
